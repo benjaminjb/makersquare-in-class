@@ -1,4 +1,4 @@
-require_relative '../dr.rb'
+require_relative '../anagrams.rb'
 
 describe Anagrams do
 
