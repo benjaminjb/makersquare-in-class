@@ -13,7 +13,7 @@ describe Lucky do
     expect(response).to be false
   end
 
-  describe 'extensions', :pending => true do
+  describe 'extensions' do
     it 'should handle an odd character count correctly' do
       str = '2871935'
       response = Lucky.check(str)

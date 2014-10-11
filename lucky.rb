@@ -19,4 +19,31 @@
 # up with this problem.
 
 class Lucky
+
+  def self.check(str)
+
+    raise error if str == "" || /\D/.match(str)
+
+    left_half = str.to_s.split('')[0..(str.to_s.length/2)-1]
+    right_half = str.to_s.split('')[(str.to_s.length/2)..-1]
+    right_half = right_half.drop(1) if right_half.length != left_half.length
+            
+    return left_half.map(&:to_i).inject(:+) == right_half.map(&:to_i).inject(:+)
+
+  end
+
+  # def self.check(str)
+
+  #   if str == "" || /\D/.match(str)
+  #     raise error
+  #   end
+
+  #   str.to_s.length.even? ? i = str.to_s.length/2 : i = str.to_s.length/2+1
+
+  #   left_half = str.to_s.split('')[0..(str.to_s.length/2)-1]
+  #   right_half = str.to_s.split('')[i..-1]
+
+  #   return left_half.map(&:to_i).inject(:+) == right_half.map(&:to_i).inject(:+)
+
+  # end
 end
