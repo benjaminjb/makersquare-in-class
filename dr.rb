@@ -8,4 +8,20 @@
 
 module DigitalRoot
 
+  def self.calculate(num)
+    while (num.to_s.length > 1)
+      num = num.to_s.split('').map {|x| x.to_i}.inject(:+)
+    end
+    return num
+  end
+
+  def self.calculate2(num)
+    while (num.to_s.length > 1)
+      first_digit = num % 10
+      rest = num / 10
+      num = rest + first_digit
+    end
+    num  
+  end
+
 end
