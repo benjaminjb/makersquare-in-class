@@ -14,6 +14,42 @@
 # formatted string in the range format.
 #
 # Credit to user jhoffner on codewars.com
+require 'pry-byebug'
 
 class RangeEx
+  
+  def self.parse(range)
+    if (range.is_a?(Array))
+      range_begin = nil
+      range_array = []
+      incremental = false
+      range.flatten!
+
+      range.each_index do |index|
+        if (range[index].next == range[index+1] && incremental == false)
+          range_begin = range[index]
+          incremental = true
+        elsif (range[index].next == range[index+1] && incremental == true)
+          next
+        elsif (range[index].next != range[index+1] && incremental == true && ((((range_begin).ord - (range[index]).ord).abs) > 1))
+          incremental = false
+          range_array << "#{range_begin}-#{range[index]}"
+        elsif (range[index].next != range[index+1] && incremental == true && ((((range_begin.ord) - (range[index]).ord).abs) == 1))
+          incremental = false
+          range_array << "#{range_begin}"
+          range_array << "#{range[index]}"
+        else 
+          range_array << "#{range[index]}"
+        end 
+      end
+      return range_array.join(',')
+    else
+      raise
+    end
+  end
+
 end
+
+
+
+

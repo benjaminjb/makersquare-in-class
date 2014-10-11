@@ -19,7 +19,7 @@ describe RangeEx do
     expect(response3).to eq(ans3)
   end
 
-  describe 'extensions', :pending => true do
+  describe 'extensions' do
     it 'raises an error if the list is not an Array' do
       data = {}
       expect { RangeEx.parse(data) }.to raise_error
